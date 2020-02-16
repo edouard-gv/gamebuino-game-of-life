@@ -189,6 +189,24 @@ TEST(MyLibTestSuite, livingOnTheBorders) {
     deleteWorld(world, H);
 }
 
+TEST(MyLibTestSuite, duplicate) {
+    bool **world = new bool *[1]{
+        new bool[1] {true}
+    };
+
+    bool **savedWorld = new bool *[1]{
+            new bool[1] {false}
+    };
+
+    copyWorld(world, savedWorld, 1, 1);
+
+    EXPECT_EQ(true, savedWorld[0][0]);
+
+    world[0][0] =  false;
+
+    EXPECT_EQ(true, savedWorld[0][0]);
+}
+
 TEST(MyLibTestSuite, play) {
     EXPECT_EQ(-1 % 4, -1);
 }

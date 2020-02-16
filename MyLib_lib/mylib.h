@@ -36,7 +36,15 @@ int livingNeighbours(int i, int j, bool **world, int h, int w) {
 void initializeWorld(bool **world, int h, int w) {
     for (int i=0; i < h; i++) {
         for (int j=0; j < w; j++) {
-            world[i][j] = (i==3 || i==j);
+            world[i][j] = (rand() % 3 == 0);
+        }
+    }
+}
+
+void copyWorld(bool **source, bool **target, int h, int w) {
+    for (int i=0; i < h; i++) {
+        for (int j = 0; j < w; ++j) {
+            target[i][j] = source[i][j];
         }
     }
 }
